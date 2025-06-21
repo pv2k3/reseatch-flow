@@ -134,11 +134,11 @@ const Index = () => {
         <div className="mb-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Papers</h2>
           
-          {filteredPapers.length === 0 ? (
+          {filteredPapers.length == 0 ? (
             <div className="text-center py-12">
               <FileText className="h-12 w-12 text-gray-300 mx-auto mb-4" />
               <h3 className="text-lg font-medium text-gray-900 mb-2">
-                {papers.length === 0 ? "No papers yet" : "No papers found"}
+                {papers.length == 0 ? "No papers yet" : "No papers found"}
               </h3>
               <p className="text-gray-500 mb-4">
                 {searchTerm ? "Try a different search term" : "Get started by creating your first research paper"}
@@ -191,7 +191,7 @@ const Index = () => {
                           <Calendar className="h-3 w-3 mr-1" />
                           {formatDate(paper.lastModified)}
                         </div>
-                        <Badge variant={paper.status === "completed" ? "default" : "secondary"}>
+                        <Badge variant={paper.status == "completed" ? "default" : "secondary"}>
                           {paper.status}
                         </Badge>
                       </div>
@@ -219,7 +219,7 @@ const Index = () => {
               onChange={(e) => setNewTitle(e.target.value)}
               placeholder="Enter new title..."
               onKeyPress={(e) => {
-                if (e.key === 'Enter') {
+                if (e.key == 'Enter') {
                   handleSaveTitle();
                 }
               }}

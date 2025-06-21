@@ -72,7 +72,7 @@ const PaperEditor = () => {
     if (!paperInitialized.current) return;
     
     const currentDataString = JSON.stringify(paperData);
-    const hasChanges = currentDataString !== lastSavedDataRef.current;
+    const hasChanges = currentDataString != lastSavedDataRef.current;
     setHasUnsavedChanges(hasChanges);
   }, [paperData]);
 
@@ -95,13 +95,13 @@ const PaperEditor = () => {
   }, [paperData]);
 
   const currentSectionData = sectionsStatus[currentSection];
-  const currentContent = currentSection === 0 ? paperData.title : 
-                        currentSection === 1 ? paperData.keywords : 
+  const currentContent = currentSection == 0 ? paperData.title : 
+                        currentSection == 1 ? paperData.keywords : 
                         paperData[currentSectionData.key];
 
   const handleSectionChange = (content: string | string[]) => {
     const currentMax = currentSectionData.maxWords;
-    if (currentMax && typeof content === 'string' && getWordCount(content) > currentMax) {
+    if (currentMax && typeof content == 'string' && getWordCount(content) > currentMax) {
       toast({
         title: "Word Limit Exceeded",
         description: `This section is limited to ${currentMax} words.`,
@@ -110,10 +110,10 @@ const PaperEditor = () => {
       return;
     }
     
-    if (currentSection === 0) {
+    if (currentSection == 0) {
       // Title section is handled by TitleSubtitleEditor component
       return;
-    } else if (currentSection === 1) {
+    } else if (currentSection == 1) {
       // Keywords section
       setPaperData(prev => ({ ...prev, keywords: content as string[] }));
     } else {
@@ -223,7 +223,7 @@ const PaperEditor = () => {
 
   const handleUnsavedDialogSave = async () => {
     const saved = await handleSave();
-    if (saved && pendingSectionChange !== null) {
+    if (saved && pendingSectionChange != null) {
       setCurrentSection(pendingSectionChange);
       setPendingSectionChange(null);
     }
@@ -231,7 +231,7 @@ const PaperEditor = () => {
   };
 
   const handleUnsavedDialogDiscard = () => {
-    if (pendingSectionChange !== null) {
+    if (pendingSectionChange != null) {
       setCurrentSection(pendingSectionChange);
       setPendingSectionChange(null);
     }
@@ -256,7 +256,7 @@ const PaperEditor = () => {
                 {hasUnsavedChanges ? (
                   <span className="text-red-600">Unsaved changes</span>
                 ) : (
-                  <span>Last saved: {lastSaved.toLocaleTimeString()}</span>
+                  <span>Last saved: {lastSaved.toLocaleTimeString('en-US', { hour12: true })}</span>
                 )}
               </div>
             </div>
@@ -296,6 +296,7 @@ const PaperEditor = () => {
             currentSectionIndex={currentSection}
             totalSections={sectionsStatus.length}
             onContentChange={handleSectionChange}
+            
             onPrevSection={prevSection}
             onNextSection={nextSection}
             onSkipSection={skipSection}

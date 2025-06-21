@@ -47,7 +47,7 @@ const NewPaper = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 className="text-lg py-3"
-                onKeyPress={(e) => e.key === 'Enter' && handleContinue()}
+                onKeyPress={(e) => e.key == 'Enter' && handleContinue()}
               />
               <p className="text-sm text-gray-500">
                 This will appear as the main title of your research paper

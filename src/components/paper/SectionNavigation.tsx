@@ -20,7 +20,7 @@ export const SectionNavigation = ({
 }: SectionNavigationProps) => {
   const getContentWordCount = (section: PaperSection) => {
     const content = paperData[section.key];
-    if (section.key === 'keywords') {
+    if (section.key == 'keywords') {
       return Array.isArray(content) ? content.length : 0;
     }
     return getWordCount(content as string);
@@ -28,7 +28,7 @@ export const SectionNavigation = ({
 
   const formatWordDisplay = (section: PaperSection) => {
     const count = getContentWordCount(section);
-    if (section.key === 'keywords') {
+    if (section.key == 'keywords') {
       return `${count} keywords`;
     }
     if (section.maxWords) {
@@ -48,7 +48,7 @@ export const SectionNavigation = ({
             key={section.id}
             onClick={() => onSectionChange(index)}
             className={`w-full flex items-center justify-between p-3 rounded-lg text-left transition-colors ${
-              currentSection === index
+              currentSection == index
                 ? 'bg-blue-100 border-blue-200 border'
                 : 'hover:bg-gray-50'
             }`}
@@ -66,7 +66,7 @@ export const SectionNavigation = ({
                 </div>
               </div>
             </div>
-            {currentSection === index && (
+            {currentSection == index && (
               <Badge variant="secondary" className="text-xs">
                 Current
               </Badge>

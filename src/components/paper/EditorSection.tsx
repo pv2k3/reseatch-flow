@@ -112,7 +112,7 @@ export const EditorSection = ({
             <CardContent className="space-y-4">
               <ReactQuill
                 theme="snow"
-                value={typeof currentContent === 'string' ? currentContent : ''}
+                value={typeof currentContent == 'string' ? currentContent : ''}
                 onChange={(content) => onContentChange(content)}
                 modules={quillModules}
                 placeholder={`Write your ${currentSection.name.toLowerCase()} here...`}
@@ -126,7 +126,7 @@ export const EditorSection = ({
   };
 
   // For title/subtitle section, don't show navigation in the card
-  if (currentSectionIndex === 0) {
+  if (currentSectionIndex == 0) {
     return (
       <div className="space-y-6">
         {renderSectionContent()}
@@ -138,7 +138,7 @@ export const EditorSection = ({
               <Button
                 variant="outline"
                 onClick={onPrevSection}
-                disabled={currentSectionIndex === 0}
+                disabled={currentSectionIndex == 0}
               >
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Previous
@@ -148,7 +148,7 @@ export const EditorSection = ({
                 <Button
                   variant="ghost"
                   onClick={onSkipSection}
-                  disabled={currentSectionIndex === totalSections - 1}
+                  disabled={currentSectionIndex == totalSections - 1}
                   className="text-gray-600"
                 >
                   <SkipForward className="h-4 w-4 mr-2" />
@@ -157,7 +157,7 @@ export const EditorSection = ({
                 
                 <Button
                   onClick={onNextSection}
-                  disabled={currentSectionIndex === totalSections - 1}
+                  disabled={currentSectionIndex == totalSections - 1}
                   className="bg-blue-600 hover:bg-blue-700"
                 >
                   Next
@@ -183,7 +183,7 @@ export const EditorSection = ({
             <Button
               variant="outline"
               onClick={onPrevSection}
-              disabled={currentSectionIndex === 0}
+              disabled={currentSectionIndex == 0}
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Previous
@@ -193,7 +193,7 @@ export const EditorSection = ({
               <Button
                 variant="ghost"
                 onClick={onSkipSection}
-                disabled={currentSectionIndex === totalSections - 1}
+                disabled={currentSectionIndex == totalSections - 1}
                 className="text-gray-600"
               >
                 <SkipForward className="h-4 w-4 mr-2" />
@@ -202,7 +202,7 @@ export const EditorSection = ({
               
               <Button
                 onClick={onNextSection}
-                disabled={currentSectionIndex === totalSections - 1}
+                disabled={currentSectionIndex == totalSections - 1}
                 className="bg-blue-600 hover:bg-blue-700"
               >
                 Next

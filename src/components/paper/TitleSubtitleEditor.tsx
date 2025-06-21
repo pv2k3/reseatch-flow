@@ -53,7 +53,7 @@ export const TitleSubtitleEditor = ({ paperData, onPaperDataChange }: TitleSubti
   const removeSubtitle = (id: string) => {
     onPaperDataChange({
       ...paperData,
-      subtitles: paperData.subtitles.filter(s => s.id !== id)
+      subtitles: paperData.subtitles.filter(s => s.id != id)
     });
   };
 
@@ -61,7 +61,7 @@ export const TitleSubtitleEditor = ({ paperData, onPaperDataChange }: TitleSubti
     onPaperDataChange({
       ...paperData,
       subtitles: paperData.subtitles.map(s => 
-        s.id === id ? { ...s, ...updates } : s
+        s.id == id ? { ...s, ...updates } : s
       )
     });
   };

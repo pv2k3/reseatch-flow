@@ -10,7 +10,7 @@ export const savePaper = (id: string, title: string, data: PaperData): SavedPape
   const contentSections = ['abstract', 'introduction', 'content', 'conclusion', 'references'];
   const totalWords = contentSections.reduce((sum, key) => {
     const content = data[key as keyof PaperData];
-    if (typeof content === 'string' && content.trim()) {
+    if (typeof content == 'string' && content.trim()) {
       return sum + getWordCount(content);
     }
     return sum;
@@ -26,7 +26,7 @@ export const savePaper = (id: string, title: string, data: PaperData): SavedPape
   };
 
   // Remove any existing paper with same ID to prevent duplicates
-  const filteredPapers = papers.filter(p => p.id !== id);
+  const filteredPapers = papers.filter(p => p.id != id);
   filteredPapers.push(paper);
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(filteredPapers));
@@ -44,18 +44,18 @@ export const getSavedPapers = (): SavedPaper[] => {
 
 export const getPaper = (id: string): SavedPaper | null => {
   const papers = getSavedPapers();
-  return papers.find(p => p.id === id) || null;
+  return papers.find(p => p.id == id) || null;
 };
 
 export const deletePaper = (id: string): void => {
   const papers = getSavedPapers();
-  const filtered = papers.filter(p => p.id !== id);
+  const filtered = papers.filter(p => p.id != id);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(filtered));
 };
 
 export const updatePaperTitle = (id: string, newTitle: string): boolean => {
   const papers = getSavedPapers();
-  const paperIndex = papers.findIndex(p => p.id === id);
+  const paperIndex = papers.findIndex(p => p.id == id);
   
   if (paperIndex >= 0) {
     papers[paperIndex].title = newTitle;

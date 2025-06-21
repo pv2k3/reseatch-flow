@@ -13,7 +13,7 @@ export const KeywordsInput = ({ keywords, onChange }: KeywordsInputProps) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && inputValue.trim()) {
+    if (e.key == 'Enter' && inputValue.trim()) {
       e.preventDefault();
       const newKeyword = inputValue.trim();
       if (!keywords.includes(newKeyword)) {
@@ -24,7 +24,7 @@ export const KeywordsInput = ({ keywords, onChange }: KeywordsInputProps) => {
   };
 
   const removeKeyword = (indexToRemove: number) => {
-    onChange(keywords.filter((_, index) => index !== indexToRemove));
+    onChange(keywords.filter((_, index) => index != indexToRemove));
   };
 
   return (

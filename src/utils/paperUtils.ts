@@ -2,7 +2,7 @@
 import { PaperData } from "@/types/paper";
 
 export const getWordCount = (text: string): number => {
-  if (!text || typeof text !== 'string') return 0;
+  if (!text || typeof text != 'string') return 0;
   // Remove HTML tags for accurate word count
   const plainText = text.replace(/<[^>]*>/g, '');
   const words = plainText.trim().split(/\s+/).filter(word => word.length > 0);
