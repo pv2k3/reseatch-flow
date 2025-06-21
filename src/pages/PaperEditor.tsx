@@ -14,10 +14,25 @@ import 'react-quill/dist/quill.snow.css';
 
 const PaperEditor = () => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { toast } = useToast();
   
-  const paperId = searchParams.get('id') || `paper-${Date.now()}`;
+  // Generate paperId only once and persist it in URL params
+  const [paperId] = useState(() => {
+    const existingId = searchParams.get('id');
+    if (existingId) {
+      return existingId;
+    }
+    const newId = `paper-${Date.now()}`;
+    // Update URL with the new ID so it persists on refresh
+    setSearchParams(prev => {
+      const newParams = new URLSearchParams(prev);
+      newParams.set('id', newId);
+      return newParams;
+    });
+    return newId;
+  });
+
   const [currentSection, setCurrentSection] = useState(0);
   const [paperData, setPaperData] = useState<PaperData>({
     title: searchParams.get('title') || '',
@@ -51,6 +66,7 @@ const PaperEditor = () => {
       };
       setPaperData(updatedData);
       lastSavedDataRef.current = JSON.stringify(updatedData);
+      setLastSaved(new Date(existingPaper.lastModified || existingPaper.createdAt));
     }
     paperInitialized.current = true;
   }, [paperId]);
@@ -72,7 +88,7 @@ const PaperEditor = () => {
     if (!paperInitialized.current) return;
     
     const currentDataString = JSON.stringify(paperData);
-    const hasChanges = currentDataString != lastSavedDataRef.current;
+    const hasChanges = currentDataString !== lastSavedDataRef.current;
     setHasUnsavedChanges(hasChanges);
   }, [paperData]);
 
@@ -95,13 +111,13 @@ const PaperEditor = () => {
   }, [paperData]);
 
   const currentSectionData = sectionsStatus[currentSection];
-  const currentContent = currentSection == 0 ? paperData.title : 
-                        currentSection == 1 ? paperData.keywords : 
+  const currentContent = currentSection === 0 ? paperData.title : 
+                        currentSection === 1 ? paperData.keywords : 
                         paperData[currentSectionData.key];
 
   const handleSectionChange = (content: string | string[]) => {
     const currentMax = currentSectionData.maxWords;
-    if (currentMax && typeof content == 'string' && getWordCount(content) > currentMax) {
+    if (currentMax && typeof content === 'string' && getWordCount(content) > currentMax) {
       toast({
         title: "Word Limit Exceeded",
         description: `This section is limited to ${currentMax} words.`,
@@ -110,10 +126,10 @@ const PaperEditor = () => {
       return;
     }
     
-    if (currentSection == 0) {
+    if (currentSection === 0) {
       // Title section is handled by TitleSubtitleEditor component
       return;
-    } else if (currentSection == 1) {
+    } else if (currentSection === 1) {
       // Keywords section
       setPaperData(prev => ({ ...prev, keywords: content as string[] }));
     } else {
@@ -223,7 +239,7 @@ const PaperEditor = () => {
 
   const handleUnsavedDialogSave = async () => {
     const saved = await handleSave();
-    if (saved && pendingSectionChange != null) {
+    if (saved && pendingSectionChange !== null) {
       setCurrentSection(pendingSectionChange);
       setPendingSectionChange(null);
     }
@@ -231,7 +247,7 @@ const PaperEditor = () => {
   };
 
   const handleUnsavedDialogDiscard = () => {
-    if (pendingSectionChange != null) {
+    if (pendingSectionChange !== null) {
       setCurrentSection(pendingSectionChange);
       setPendingSectionChange(null);
     }
