@@ -9,6 +9,7 @@ import NewPaper from "./pages/NewPaper";
 import PaperEditor from "./pages/PaperEditor";
 import NotFound from "./pages/NotFound";
 import Sign_in from "./pages/Sign_in";
+import Signup from "./pages/Sign_up";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,8 @@ const App = () => (
           <Route path="/new-paper" element={<NewPaper />} />
           <Route path="/editor" element={<PaperEditor />} />
           <Route path="/sign-in" element={<Sign_in />} />
+          <Route path="/sign-up" element={<Signup />} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
