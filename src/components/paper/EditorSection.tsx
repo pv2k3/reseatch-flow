@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
@@ -35,6 +34,30 @@ const quillModules = {
   ],
 };
 
+// Helper function to check if ReactQuill content is empty
+const isQuillContentEmpty = (content: string): boolean => {
+  if (!content || content.trim() === '') return true;
+  
+  // Remove common empty HTML patterns that Quill generates
+  const cleanContent = content
+    .replace(/<p><br><\/p>/g, '')
+    .replace(/<p><\/p>/g, '')
+    .replace(/<br>/g, '')
+    .replace(/&nbsp;/g, '')
+    .replace(/<[^>]*>/g, '') // Remove all HTML tags
+    .trim();
+    
+  return cleanContent === '';
+};
+
+// Helper function to clean ReactQuill content for saving
+const cleanQuillContent = (content: string): string => {
+  if (isQuillContentEmpty(content)) {
+    return ''; // Return empty string for truly empty content
+  }
+  return content;
+};
+
 export const EditorSection = ({
   currentSection,
   currentContent,
@@ -55,6 +78,12 @@ export const EditorSection = ({
     Array.isArray(currentContent) ? currentContent.join(', ') : currentContent, 
     currentSection.maxWords
   ) : 0;
+
+  // Handle ReactQuill onChange with proper content cleaning
+  const handleQuillChange = (content: string) => {
+    const cleanedContent = cleanQuillContent(content);
+    onContentChange(cleanedContent);
+  };
 
   // Render different sections based on current section
   const renderSectionContent = () => {
@@ -112,8 +141,8 @@ export const EditorSection = ({
             <CardContent className="space-y-4">
               <ReactQuill
                 theme="snow"
-                value={typeof currentContent == 'string' ? currentContent : ''}
-                onChange={(content) => onContentChange(content)}
+                value={typeof currentContent === 'string' ? currentContent : ''}
+                onChange={handleQuillChange}
                 modules={quillModules}
                 placeholder={`Write your ${currentSection.name.toLowerCase()} here...`}
                 style={{ height: '400px' }}
