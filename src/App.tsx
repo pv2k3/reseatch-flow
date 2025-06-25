@@ -10,10 +10,8 @@ import PaperEditor from "./pages/PaperEditor";
 import NotFound from "./pages/NotFound";
 import Sign_in from "./pages/Sign_in";
 import Signup from "./pages/Sign_up";
-import Slide1 from "./pages/Slide1";
-import Slide2 from "./pages/Slide2";
-import Slide3 from "./pages/Slide3"; 
-import HeroCarousel from "./pages/HeroCarousel"; 
+// import HeroCarousel from "./pages/HeroCarousel"; 
+import Home from "./pages/Home";
 
 const queryClient = new QueryClient();
 
@@ -29,10 +27,13 @@ const App = () => (
           <Route path="/editor" element={<PaperEditor />} />
           <Route path="/sign-in" element={<Sign_in />} />
           <Route path="/sign-up" element={<Signup />} />
-          <Route path="/Slide1" element={<Slide1 />} />
+          {/* <Route path="/Slide1" element={<Slide1 />} />
           <Route path="/Slide2" element={<Slide2 />} />
           <Route path="/Slide3" element={<Slide3 />} />
-          <Route path="/hero-carousel" element={<HeroCarousel />} />
+          <Route path="/hero-carousel" element={<HeroCarousel />} /> */}
+          <Route path="/home" element={<Home />} />
+
+          {/* ADD ALL CUSTOM ROUTES BELOW THIS LINE */}
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THIS LINE */}
           {/* Example of a custom route */}

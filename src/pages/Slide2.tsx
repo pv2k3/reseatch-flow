@@ -31,7 +31,7 @@ const Slide2: React.FC = () => {
           
           {/* Call to Action Button */}
           <button 
-            className="bg-white text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform"
+            className="bg-white text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform"
             onClick={() => {
               // Add your navigation logic here
               console.log('Learn more clicked');
