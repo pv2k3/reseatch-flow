@@ -3,7 +3,7 @@ import { User, ChevronLeft, ChevronRight } from 'lucide-react';
 
 // import slide1 from "../components/images/slide1.png";
 import slide1 from "../components/images/slide1.jpg";
-import slide2 from "../components/images/slide2.png";
+import slide22 from "../components/images/slide22.png";
 import slide3 from "../components/images/slide3.png";
 
 const ScholarSyncSlideshow: React.FC = () => {
@@ -20,7 +20,7 @@ const ScholarSyncSlideshow: React.FC = () => {
     },
     {
       id: 2,
-      backgroundImage: slide2,
+      backgroundImage: slide22,
       title: 'Empowering Researchers, One Paper at a Time.',
       subtitle: 'ScholarSync helps you write, manage, and collaborate on research papers effortlessly.',
       showButtons: false
@@ -84,23 +84,24 @@ const ScholarSyncSlideshow: React.FC = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
 
-      {/* Fixed Navigation */}
-      <nav className="relative z-20 flex justify-between items-center px-6 lg:px-12 py-6">
-        <div className="text-white text-2xl font-semibold">
-          ScholarSync
-        </div>
-        
-        <div className="hidden md:flex space-x-8 text-white">
-          <a href="#" className="hover:text-gray-300 transition-colors">Home</a>
-          <a href="#" className="hover:text-gray-300 transition-colors">About ScholarSync</a>
-          <a href="#" className="hover:text-gray-300 transition-colors">Your Papers</a>
-          <a href="#" className="hover:text-gray-300 transition-colors">Forge your Paper</a>
-        </div>
+{/* Fixed Navigation */}
+<nav className="fixed top-0 left-0 right-0 z-20 flex justify-between items-center px-6 lg:px-12 py-2 bg-black bg-opacity-20 backdrop-blur-sm">
+  <div className="text-white text-2xl font-semibold">
+    ScholarSync
+  </div>
+  
+  <div className="hidden md:flex space-x-8 text-white">
+    <a href="#home" className="hover:text-gray-300 transition-colors">Home</a>
+    <a href="#about" className="hover:text-gray-300 transition-colors">About ScholarSync</a>
+    <a href="#features" className="hover:text-gray-300 transition-colors">Features</a>
+    <a href="/your-papers" className="hover:text-gray-300 transition-colors">Your Papers</a>
+    <a href="/new-paper" className="hover:text-gray-300 transition-colors">Forge your Paper</a>
+  </div>
 
-        <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-full p-2">
-          <User className="w-6 h-6 text-white" />
-        </div>
-      </nav>
+  <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-full p-2">
+    <User className="w-6 h-6 text-white" />
+  </div>
+</nav>
 
       {/* Main Content */}
       <div className="relative z-10 flex items-center justify-start h-full px-6 lg:px-12 -mt-20">

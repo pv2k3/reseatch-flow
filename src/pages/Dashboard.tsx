@@ -16,7 +16,7 @@ import { getSavedPapers, deletePaper, updatePaperTitle, clearAllPapers } from "@
 import { SavedPaper } from "@/types/paper";
 import { useToast } from "@/hooks/use-toast";
 
-const Index = () => {
+const Dashboard = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [searchTerm, setSearchTerm] = useState("");
@@ -239,4 +239,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Dashboard;
