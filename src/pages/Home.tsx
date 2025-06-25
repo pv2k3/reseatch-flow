@@ -1,7 +1,7 @@
 import React from 'react';
 import { User } from 'lucide-react';
 // Import statement as requested
-import sign_up from "../components/images/sign_up.jpg";
+import home1 from "../components/images/home1.png";
 
 const Landing: React.FC = () => {
   return (
@@ -9,10 +9,10 @@ const Landing: React.FC = () => {
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${sign_up})` }}
+        style={{ backgroundImage: `url(${home1})` }}
       >
         {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       </div>
 
       {/* Content */}
