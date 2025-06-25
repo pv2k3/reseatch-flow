@@ -1,15 +1,15 @@
 import React from 'react';
 import { User } from 'lucide-react';
 // Import statement as requested
-import home1 from "../components/images/home1.png";
+import slide1 from "../components/images/slide1.png";
 
-const Landing: React.FC = () => {
+const Slide1: React.FC = () => {
   return (
     <div className="min-h-screen relative">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${home1})` }}
+        style={{ backgroundImage: `url(${slide1})` }}
       >
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-30"></div>
@@ -68,4 +68,4 @@ const Landing: React.FC = () => {
   );
 };
 
-export default Landing;
+export default  Slide1;

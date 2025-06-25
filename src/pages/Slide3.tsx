@@ -1,14 +1,14 @@
 import React from 'react';
-import home3 from "../components/images/home3.png";
+import slide3 from "../components/images/Slide3.png";
 
-const HeroSectionAlt: React.FC = () => {
+const Slide3: React.FC = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${home3})`,
+          backgroundImage: `url(${slide3})`,
         }}
       >
         {/* Dark overlay for better text readability */}
@@ -44,4 +44,4 @@ const HeroSectionAlt: React.FC = () => {
   );
 };
 
-export default HeroSectionAlt;
+export default  Slide3;

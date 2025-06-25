@@ -1,14 +1,15 @@
 import React from 'react';
-import home2 from "../components/images/home2.png";
+import slide2 from "../components/images/Slide2.png";
 
-const Home2: React.FC = () => {
+
+const Slide2: React.FC = () => {
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${home2})`,
+          backgroundImage: `url(${slide2})`,
         }}
       >
         {/* Dark overlay for better text readability */}
@@ -44,4 +45,4 @@ const Home2: React.FC = () => {
   );
 };
 
-export default Home2;
+export default  Slide2;
