@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { User, ChevronLeft, ChevronRight } from 'lucide-react';
+import AnimatedWrapper from '../components/AnimatedWrapper';
 
 // import slide1 from "../components/images/slide1.png";
 import slide1 from "../components/images/slide1.jpg";
 import slide22 from "../components/images/slide22.png";
 import slide3 from "../components/images/slide3.png";
 
-const ScholarSyncSlideshow: React.FC = () => {
+const ScholarSyncSlideshow = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Sample background images (replace with your actual images)
   const slides = [
     {
       id: 1,
-      backgroundImage:  slide1,
+      backgroundImage: slide1,
       title: 'Welcome to LPCPS\nScholarSync...',
       subtitle: '"Write Smarter, Research Faster — Empowering Researchers &\nRevolutionizing the Way You Research."',
       showButtons: true
@@ -42,7 +43,7 @@ const ScholarSyncSlideshow: React.FC = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
-  const goToSlide = (index: number) => {
+  const goToSlide = (index) => {
     setCurrentSlide(index);
   };
 
@@ -55,95 +56,96 @@ const ScholarSyncSlideshow: React.FC = () => {
   const currentSlideData = slides[currentSlide];
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-gray-900">
-{/* Background Image with Transition */}
-{/* Background Image with Transition */}
-<div 
-  className="absolute inset-0 transition-all duration-1000 ease-in-out"
-  style={{ 
-    backgroundImage: `url(${currentSlideData.backgroundImage})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center center',
-    transform: 'scale(1.05)',
-    animation: 'zoomFade 1s ease-in-out'
-  }}
->
-  <style>{`
-    @keyframes zoomFade {
-      0% {
-        opacity: 0;
-        transform: scale(1.1);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1.05);
-      }
-    }
-  `}</style>
+<div className="relative w-full h-screen overflow-hidden bg-gray-900" style={{marginTop: '-75px'}}>      <div 
+        className="absolute inset-0 transition-all duration-1000 ease-in-out"
+        style={{ 
+          backgroundImage: `url(${currentSlideData.backgroundImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+          transform: 'scale(1.05)',
+          animation: 'zoomFade 1s ease-in-out'
+        }}
+      >
+        <style>{`
+          @keyframes zoomFade {
+            0% {
+              opacity: 0;
+              transform: scale(1.1);
+            }
+            100% {
+              opacity: 1;
+              transform: scale(1.05);
+            }
+          }
+        `}</style>
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
 
-{/* Fixed Navigation */}
-<nav className="fixed top-0 left-0 right-0 z-20 flex justify-between items-center px-6 lg:px-12 py-2 bg-black bg-opacity-20 backdrop-blur-sm">
-  <div className="text-white text-2xl font-semibold">
-    ScholarSync
-  </div>
-  
-  <div className="hidden md:flex space-x-8 text-white">
-    <a href="#home" className="hover:text-gray-300 transition-colors">Home</a>
-    <a href="#about" className="hover:text-gray-300 transition-colors">About ScholarSync</a>
-    <a href="#features" className="hover:text-gray-300 transition-colors">Features</a>
-    <a href="/your-papers" className="hover:text-gray-300 transition-colors">Your Papers</a>
-    <a href="/new-paper" className="hover:text-gray-300 transition-colors">Forge your Paper</a>
-  </div>
-
-  <div className="bg-white bg-opacity-20 backdrop-blur-sm rounded-full p-2">
-    <User className="w-6 h-6 text-white" />
-  </div>
-</nav>
-
       {/* Main Content */}
-      <div className="relative z-10 flex items-center justify-start h-full px-6 lg:px-12 -mt-20">
-        <div className={`max-w-4xl transition-all duration-500 ease-in-out ${
-          currentSlide === 0 ? 'transform translate-x-0 opacity-100' : 
-          currentSlide === 1 ? 'transform translate-x-0 opacity-100' : 
-          'transform translate-x-0 opacity-100'
-        }`}>
+      <div className="relative z-10 flex items-center justify-start h-full px-6 lg:px-12">
+        <div className="max-w-4xl">
           {/* Main Heading */}
-          <h1 className="text-white text-5xl lg:text-7xl font-bold leading-tight mb-8 whitespace-pre-line">
-            {currentSlideData.title}
-          </h1>
+          <AnimatedWrapper 
+            key={`title-${currentSlide}`}
+            animation="fadeInUp" 
+            duration={0.8}
+          >
+            <h1 className="text-white text-5xl lg:text-7xl font-bold leading-tight mb-8 whitespace-pre-line">
+              {currentSlideData.title}
+            </h1>
+          </AnimatedWrapper>
 
           {/* Subtitle */}
-          <p className="text-white text-xl lg:text-2xl mb-12 font-light max-w-3xl whitespace-pre-line">
-            {currentSlideData.subtitle}
-          </p>
+          <AnimatedWrapper 
+            key={`subtitle-${currentSlide}`}
+            animation="fadeInUp" 
+            delay={0.3}
+            duration={0.8}
+          >
+            <p className="text-white text-xl lg:text-2xl mb-12 font-light max-w-3xl whitespace-pre-line">
+              {currentSlideData.subtitle}
+            </p>
+          </AnimatedWrapper>
 
           {/* CTA Buttons - Only show on first slide */}
           {currentSlideData.showButtons && (
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-gray-700 bg-opacity-80 text-white px-8 py-3 rounded-lg hover:bg-opacity-90 transition-all duration-300 backdrop-blur-sm transform hover:scale-105">
-                Learn more
-              </button>
-              <button className="bg-blue-600 bg-opacity-80 text-white px-8 py-3 rounded-lg hover:bg-opacity-90 transition-all duration-300 backdrop-blur-sm transform hover:scale-105">
-                Get Started
-              </button>
-            </div>
+            <AnimatedWrapper 
+              key={`buttons-${currentSlide}`}
+              animation="fadeInUp" 
+              delay={0.6}
+              duration={0.8}
+            >
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-gray-700 bg-opacity-80 text-white px-8 py-3 rounded-lg hover:bg-opacity-90 transition-all duration-300 backdrop-blur-sm transform hover:scale-105">
+                  Learn more
+                </button>
+                <button className="bg-blue-600 bg-opacity-80 text-white px-8 py-3 rounded-lg hover:bg-opacity-90 transition-all duration-300 backdrop-blur-sm transform hover:scale-105">
+                  Get Started
+                </button>
+              </div>
+            </AnimatedWrapper>
           )}
 
           {/* Single CTA Button - Show on other slides */}
           {!currentSlideData.showButtons && (
-            <button 
-              className={`px-8 py-4 rounded-lg text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${
-                currentSlide === 1 
-                  ? 'bg-white text-gray-900 hover:bg-gray-100' 
-                  : 'bg-gray-800 bg-opacity-80 text-white hover:bg-opacity-90 border border-gray-600 backdrop-blur-sm'
-              }`}
-              onClick={() => console.log('Learn more clicked')}
+            <AnimatedWrapper 
+              key={`single-button-${currentSlide}`}
+              animation="fadeInUp" 
+              delay={0.6}
+              duration={0.8}
             >
-              Learn more
-            </button>
+              <button 
+                className={`px-8 py-4 rounded-lg text-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${
+                  currentSlide === 1 
+                    ? 'bg-white text-gray-900 hover:bg-gray-100' 
+                    : 'bg-gray-800 bg-opacity-80 text-white hover:bg-opacity-90 border border-gray-600 backdrop-blur-sm'
+                }`}
+                onClick={() => console.log('Learn more clicked')}
+              >
+                Learn more
+              </button>
+            </AnimatedWrapper>
           )}
         </div>
       </div>
