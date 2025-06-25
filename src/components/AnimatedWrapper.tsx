@@ -1,11 +1,10 @@
-import React from 'react';
 import { useScrollAnimation } from './hooks/useScrollAnimation';
 
 const AnimatedWrapper = ({ 
   children, 
   animation = 'fadeInUp', 
   delay = 0, 
-  duration = 0.6,
+  duration = 0.1,
   threshold = 0.1,
   className = '' 
 }) => {

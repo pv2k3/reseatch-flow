@@ -4,15 +4,18 @@ import About from "../pages/About";
 import Features from "./Features";
 import NavigationTracker from "../components/NavigationTracker";
 import AnimatedWrapper from "../components/AnimatedWrapper";
+import Footer from "../pages/Footer";
+// import Dashboard from "../pages/Dashboard";
 
 const Home = () => {
   // Define your sections for navigation
   const sections = [
     { id: 'home', name: 'Home' },
-    { id: 'about', name: 'About ScholarSync' },
+    { id: 'about', name: 'About' },
     { id: 'features', name: 'Features' },
-    { id: 'your-papers', name: 'Your Papers' },
-    { id: 'new-paper', name: 'Forge your Paper' }
+    { id: 'your-papers', href: '/your-papers', name: 'Your Papers' },
+    { id: 'new-paper', href: '/new-paper', name: 'Forge your Paper' }
+
   ];
 
   return (
@@ -39,6 +42,11 @@ const Home = () => {
             <Features />
           </section>
         </AnimatedWrapper>
+
+                <section id="footer">
+            <Footer />
+          </section>
+
       </div>
     </div>
   );

@@ -143,15 +143,17 @@ const Features = () => {
             <AnimatedWrapper animation="fadeInUp" delay={2.4} duration={0.8}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
                 <button className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-purple-500/25 flex items-center gap-2 min-w-[250px]">
-                  <span>Start Your Research Journey</span>
+                  <a href='/your-papers' className="flex items-center gap-2">
+                    
+                    Start Your Research Journey</a>
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </button>
-                
-                <button className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full font-semibold hover:border-purple-500 hover:text-purple-600 hover:bg-purple-50 transition-all duration-300 min-w-[200px]">
+
+                <a href='#features' className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full font-semibold hover:border-purple-500 hover:text-purple-600 hover:bg-purple-50 transition-all duration-300 min-w-[200px]">
                   Explore Features
-                </button>
+                </a>
               </div>
             </AnimatedWrapper>
             
