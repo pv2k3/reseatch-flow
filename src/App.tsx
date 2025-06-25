@@ -10,6 +10,7 @@ import PaperEditor from "./pages/PaperEditor";
 import NotFound from "./pages/NotFound";
 import Sign_in from "./pages/Sign_in";
 import Signup from "./pages/Sign_up";
+import Home from "./pages/Home";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,9 @@ const App = () => (
           <Route path="/editor" element={<PaperEditor />} />
           <Route path="/sign-in" element={<Sign_in />} />
           <Route path="/sign-up" element={<Signup />} />
+          <Route path="/home" element={<Home />} />
+          
+          {/* ADD ALL CUSTOM ROUTES ABOVE THIS LINE */}
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
