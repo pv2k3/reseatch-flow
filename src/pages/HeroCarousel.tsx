@@ -6,14 +6,14 @@ import slide1 from "../components/images/slide1.jpg";
 import slide2 from "../components/images/slide2.png";
 import slide3 from "../components/images/slide3.png";
 
-const HeroCarousel: React.FC = () => {
+const ScholarSyncSlideshow: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Sample background images (replace with your actual images)
   const slides = [
     {
       id: 1,
-      backgroundImage: slide1,
+      backgroundImage:  slide1,
       title: 'Welcome to LPCPS\nScholarSync...',
       subtitle: '"Write Smarter, Research Faster — Empowering Researchers &\nRevolutionizing the Way You Research."',
       showButtons: true
@@ -55,12 +55,31 @@ const HeroCarousel: React.FC = () => {
   const currentSlideData = slides[currentSlide];
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      {/* Background Image with Transition */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out"
-        style={{ backgroundImage: `url(${currentSlideData.backgroundImage})` }}
-      >
+    <div className="relative w-full h-screen overflow-hidden bg-gray-900">
+{/* Background Image with Transition */}
+{/* Background Image with Transition */}
+<div 
+  className="absolute inset-0 transition-all duration-1000 ease-in-out"
+  style={{ 
+    backgroundImage: `url(${currentSlideData.backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    transform: 'scale(1.05)',
+    animation: 'zoomFade 1s ease-in-out'
+  }}
+>
+  <style>{`
+    @keyframes zoomFade {
+      0% {
+        opacity: 0;
+        transform: scale(1.1);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    }
+  `}</style>
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
@@ -168,4 +187,4 @@ const HeroCarousel: React.FC = () => {
   );
 };
 
-export default HeroCarousel;
+export default ScholarSyncSlideshow;
