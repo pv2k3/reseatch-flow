@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { Search, Plus, FileText, Calendar, MoreVertical, Edit3, Trash2 } from "lucide-react";
+import { Search, Plus, FileText, Calendar, MoreVertical, Edit3, Trash2, Clock, Folder  } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { getSavedPapers, deletePaper, updatePaperTitle } from "@/utils/storageUtils";
 import { SavedPaper } from "@/types/paper";
@@ -85,7 +85,11 @@ const Dashboard = () => {
       {/* Header */}
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <h1 className="text-2xl font-bold text-gray-900">ResearchPaper Writer</h1>
+        <h1 className="text-2xl font-bold text-gray-900 flex items-center space-x-2">
+  <FileText className="h-6 w-6 text-blue-600" />
+  <span>ResearchPaper Writer</span>
+</h1>
+
           <div className="flex items-center space-x-4">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
@@ -106,7 +110,11 @@ const Dashboard = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-8">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Papers</h2>
+      <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+  <Clock className="h-4 w-4 text-blue-600" />
+  <span>Recent Papers</span>
+</h2>
+
 
         {filteredPapers.length === 0 ? (
           <div className="text-center py-12">
@@ -170,7 +178,10 @@ const Dashboard = () => {
 
         {papers.length > 0 && (
           <div>
-            <h2 className="text-lg font-semibold text-gray-900 mb-2">All Papers</h2>
+<h2 className="text-lg font-semibold text-gray-900 mb-2 flex items-center space-x-2">
+  <Folder className="h-4 w-4 text-blue-600" />
+  <span>All Papers</span>
+</h2>
             <div className="border rounded-md overflow-hidden">
               <table className="w-full text-sm">
                 <thead className="bg-gray-100 text-left">
