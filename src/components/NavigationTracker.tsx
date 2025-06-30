@@ -16,7 +16,7 @@ const NavigationTracker = ({ sections = [] }) => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 lg:px-12 py-2 bg-black bg-opacity-20 backdrop-blur-sm transition-all duration-300">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 lg:px-12 py-2 bg-black bg-opacity-20 backdrop-blur-sm transition-all duration-300">  
       <div className="text-white text-2xl font-semibold">
         ScholarSync
       </div>
